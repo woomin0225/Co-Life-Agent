@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # MySQL 데이터베이스 설정
+  db:
+    image: mysql:8.0
+    container_name: colife-db
+    ports:
+      - "3307:3306"  # 로컬 포트 3307을 컨테이너 3306에 연결 (기존 MySQL과 충돌 방지)
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: colife_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    volumes:
+      - db_data:/var/lib/mysql  # 컨테이너를 껐다 켜도 데이터가 사라지지 않게 저장
+    networks:
+      - colife-network
+
+networks:
+  colife-network:
+    driver: bridge
+
+volumes:
+  db_data:
