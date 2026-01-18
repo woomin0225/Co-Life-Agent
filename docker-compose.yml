@@ -15,7 +15,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql  # 컨테이너를 껐다 켜도 데이터가 사라지지 않게 저장
     networks:
-      - colife-network
+      - colife-networkasdf
 
 networks:
   colife-network:
